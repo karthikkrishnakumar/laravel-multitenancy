@@ -1,8 +1,8 @@
 <?php
-namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -15,14 +15,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//
-});
-
-Route::post('login', [AuthController::class, 'login']);
-
-// in a routes file
-
-Route::middleware('tenant')->group(function () {
-    Route::post('save_user', [AuthController::class, 'saveUser']);
-    Route::post('my_profile', [AuthController::class, 'myProfile']);
+    return $request->user();
 });
